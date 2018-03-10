@@ -3,6 +3,44 @@ import React from 'react'
 import Bookshelf from './Bookshelf'
 import './App.css'
 
+const books = [
+    {
+        "title": "The Linux Command Line",
+        "authors": [
+            "William E. Shotts, Jr."
+        ],
+        "imageLinks": {
+            "thumbnail": "http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "id": "nggnmAEACAAJ",
+        "shelf": "currentlyReading"
+    },
+    {
+        "title": "Lords of Finance",
+        "authors": [
+            "Liaquat Ahamed"
+        ],
+        "imageLinks": {
+            "thumbnail": "http://books.google.com/books/content?id=74XNzF_al3MC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "id": "74XNzF_al3MC",
+        "shelf": "wantToRead"
+    },
+    {
+        "title": "Satire TV",
+        "authors": [
+            "Jonathan Gray",
+            "Jeffrey P. Jones",
+            "Ethan Thompson"
+        ],
+        "imageLinks": {
+            "thumbnail": "http://books.google.com/books/content?id=1wy49i-gQjIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "id": "1wy49i-gQjIC",
+        "shelf": "read"
+    }
+];
+
 class BooksApp extends React.Component {
   state = {
     /**
@@ -26,7 +64,6 @@ class BooksApp extends React.Component {
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.
                   You can find these search terms here:
                   https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
@@ -44,7 +81,7 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              < Bookshelf />
+              < Bookshelf books={books} />
             </div>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
