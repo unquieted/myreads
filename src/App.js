@@ -15,6 +15,20 @@ const books = [
         "id": "nggnmAEACAAJ",
         "shelf": "currentlyReading"
     },
+
+    {
+        "title": "Learning Web Development with React and Bootstrap",
+        "authors": [
+            "Harmeet Singh",
+            "Mehul Bhatt"
+        ],
+        "imageLinks": {
+            "thumbnail": "http://books.google.com/books/content?id=sJf1vQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "id": "sJf1vQAACAAJ",
+        "shelf": "currentlyReading"
+    },
+
     {
         "title": "Lords of Finance",
         "authors": [
