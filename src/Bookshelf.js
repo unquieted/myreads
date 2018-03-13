@@ -11,7 +11,7 @@ class Bookshelf extends Component {
             <ol className="books-grid">
               {this.props.books
                 .filter(book => book.shelf === "currentlyReading")
-                .map(book => <Book book={book} />)}
+                .map(book => <Book book={book} key={book.id}/>)}
             </ol>
           </div>
         </div>
@@ -22,7 +22,7 @@ class Bookshelf extends Component {
             <ol className="books-grid">
               {this.props.books
                 .filter(book => book.shelf === "wantToRead")
-                .map(book => <Book book={book} />)}
+                .map(book => <Book book={book} key={book.id} />)}
             </ol>
           </div>
         </div>
@@ -33,7 +33,7 @@ class Bookshelf extends Component {
             <ol className="books-grid">
               {this.props.books
                 .filter(book => book.shelf === "read")
-                .map(book => <Book book={book} />)}
+                .map(book => <Book book={book} key={book.id} />)}
             </ol>
           </div>
         </div>
