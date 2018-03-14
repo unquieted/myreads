@@ -6,33 +6,11 @@ class Bookshelf extends Component {
     return (
       <div>
         <div className="bookshelf">
-          <h2 className="bookshelf-title">Currently Reading</h2>
+          <h2 className="bookshelf-title">{this.props.bookshelf.shelfName}</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
               {this.props.books
-                .filter(book => book.shelf === "currentlyReading")
-                .map(book => <Book book={book} key={book.id}/>)}
-            </ol>
-          </div>
-        </div>
-
-        <div className="bookshelf">
-          <h2 className="bookshelf-title">Want To Read</h2>
-          <div className="bookshelf-books">
-            <ol className="books-grid">
-              {this.props.books
-                .filter(book => book.shelf === "wantToRead")
-                .map(book => <Book book={book} key={book.id} />)}
-            </ol>
-          </div>
-        </div>
-
-        <div className="bookshelf">
-          <h2 className="bookshelf-title">Already Read</h2>
-          <div className="bookshelf-books">
-            <ol className="books-grid">
-              {this.props.books
-                .filter(book => book.shelf === "read")
+                .filter(book => book.shelf === this.props.bookshelf.shelfCode)
                 .map(book => <Book book={book} key={book.id} />)}
             </ol>
           </div>
