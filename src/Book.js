@@ -10,11 +10,11 @@ class Book extends Component {
   handleChange(event) {
     console.log("handleChange called.... event.target.value: " + event.target.value);
     this.setState({ value: event.target.value });
-    // TODO: why is this not setting the correct shelf value in state?
-    console.log("this.state.value is : " + this.state.value);
+    this.props.onChangeShelf();
   }
 
   render() {
+
     return (
       <li>
         <div className="book">
@@ -29,7 +29,9 @@ class Book extends Component {
             />
 
             <div className="book-shelf-changer">
-              <select value={this.state.value} onChange={this.handleChange}>
+              <select value={this.state.value}
+                onChange={this.props.onChangeShelf}
+                >
                 <option value="none" disabled>
                   Move to...
                 </option>

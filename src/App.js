@@ -74,6 +74,13 @@ class BooksApp extends React.Component {
     showSearchPage: false
   };
 
+  changeShelf = () => {
+
+    //TODO: update state to reflect book being moved to new shelf
+
+    console.log("changeShelf called in App.js");
+  }
+
   render() {
     return (
       <div className="app">
@@ -108,9 +115,9 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               {/* Send books and bookshelf arrays to Bookshelf component as props */}
-              <Bookshelf books={this.state.books} bookshelf={this.state.bookshelves[0]} />
-              <Bookshelf books={this.state.books} bookshelf={this.state.bookshelves[1]} />
-              <Bookshelf books={this.state.books} bookshelf={this.state.bookshelves[2]} />
+              <Bookshelf books={this.state.books} bookshelf={this.state.bookshelves[0]} onChangeShelf={this.changeShelf} />
+              <Bookshelf books={this.state.books} bookshelf={this.state.bookshelves[1]} onChangeShelf={this.changeShelf} />
+              <Bookshelf books={this.state.books} bookshelf={this.state.bookshelves[2]} onChangeShelf={this.changeShelf} />
             </div>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>
