@@ -1,6 +1,19 @@
 import React, { Component } from "react";
 
 class Book extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: this.props.book.shelf };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    console.log("handleChange called.... event.target.value: " + event.target.value);
+    this.setState({ value: event.target.value });
+    // TODO: why is this not setting the correct shelf value in state?
+    console.log("this.state.value is : " + this.state.value);
+  }
+
   render() {
     return (
       <li>
@@ -16,7 +29,7 @@ class Book extends Component {
             />
 
             <div className="book-shelf-changer">
-              <select>
+              <select value={this.state.value} onChange={this.handleChange}>
                 <option value="none" disabled>
                   Move to...
                 </option>
