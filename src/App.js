@@ -1,12 +1,21 @@
 import React from "react";
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from "./BooksAPI";
 import Bookshelf from "./Bookshelf";
 import "./App.css";
 
 class BooksApp extends React.Component {
-  state = {
+  componentDidMount() {
+    BooksAPI.getAll().then(books => {
+      this.setState({ books });
+      {
+        console.log("componentDidMount");
+        console.log({ books });
+      }
+    });
+  }
 
-    bookshelves : [
+  state = {
+    bookshelves: [
       {
         shelfCode: "currentlyReading",
         shelfName: "Currently Reading"
@@ -18,52 +27,10 @@ class BooksApp extends React.Component {
       {
         shelfCode: "read",
         shelfName: "Already Read"
-      }],
+      }
+    ],
 
-      books : [
-        {
-          title: "The Linux Command Line",
-          authors: ["William E. Shotts, Jr."],
-          imageLinks: {
-            thumbnail:
-              "http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-          },
-          id: "nggnmAEACAAJ",
-          shelf: "currentlyReading"
-        },
-
-        {
-          title: "Learning Web Development with React and Bootstrap",
-          authors: ["Harmeet Singh", "Mehul Bhatt"],
-          imageLinks: {
-            thumbnail:
-              "http://books.google.com/books/content?id=sJf1vQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-          },
-          id: "sJf1vQAACAAJ",
-          shelf: "currentlyReading"
-        },
-
-        {
-          title: "Lords of Finance",
-          authors: ["Liaquat Ahamed"],
-          imageLinks: {
-            thumbnail:
-              "http://books.google.com/books/content?id=74XNzF_al3MC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-          },
-          id: "74XNzF_al3MC",
-          shelf: "wantToRead"
-        },
-        {
-          title: "Satire TV",
-          authors: ["Jonathan Gray", "Jeffrey P. Jones", "Ethan Thompson"],
-          imageLinks: {
-            thumbnail:
-              "http://books.google.com/books/content?id=1wy49i-gQjIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-          },
-          id: "1wy49i-gQjIC",
-          shelf: "read"
-        }
-      ],
+    books: [],
 
     /**
      * TODO: Instead of using this state variable to keep track of which page
@@ -75,11 +42,10 @@ class BooksApp extends React.Component {
   };
 
   changeShelf = () => {
-
     //TODO: update state to reflect book being moved to new shelf
 
     console.log("changeShelf called in App.js");
-  }
+  };
 
   render() {
     return (
@@ -115,9 +81,21 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               {/* Send books and bookshelf arrays to Bookshelf component as props */}
-              <Bookshelf books={this.state.books} bookshelf={this.state.bookshelves[0]} onChangeShelf={this.changeShelf} />
-              <Bookshelf books={this.state.books} bookshelf={this.state.bookshelves[1]} onChangeShelf={this.changeShelf} />
-              <Bookshelf books={this.state.books} bookshelf={this.state.bookshelves[2]} onChangeShelf={this.changeShelf} />
+              <Bookshelf
+                books={this.state.books}
+                bookshelf={this.state.bookshelves[0]}
+                onChangeShelf={this.changeShelf}
+              />
+              <Bookshelf
+                books={this.state.books}
+                bookshelf={this.state.bookshelves[1]}
+                onChangeShelf={this.changeShelf}
+              />
+              <Bookshelf
+                books={this.state.books}
+                bookshelf={this.state.bookshelves[2]}
+                onChangeShelf={this.changeShelf}
+              />
             </div>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>
