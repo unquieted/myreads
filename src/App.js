@@ -5,12 +5,10 @@ import "./App.css";
 
 class BooksApp extends React.Component {
   componentDidMount() {
+    console.log("App.js componentDidMount called.");
     BooksAPI.getAll().then(books => {
       this.setState({ books });
-      {
-        console.log("componentDidMount");
-        console.log({ books });
-      }
+      console.log({ books });
     });
   }
 
@@ -44,7 +42,18 @@ class BooksApp extends React.Component {
   changeShelf = () => {
     //TODO: update state to reflect book being moved to new shelf
 
-    console.log("changeShelf called in App.js");
+    console.log("App.js changeShelf called");
+
+    (book, newShelf) => {
+      BooksAPI.update(book, newShelf).then(() => {
+        book.shelf = newShelf;
+        BooksAPI.getAll().then(books => {
+          this.setState({
+            books: books
+          });
+        });
+      });
+    };
   };
 
   render() {

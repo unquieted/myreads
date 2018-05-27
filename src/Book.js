@@ -4,16 +4,10 @@ class Book extends Component {
   constructor(props) {
     super(props);
     this.state = { value: this.props.book.shelf };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    console.log("handleChange called.... event.target.value: " + event.target.value);
-    this.setState({ value: event.target.value });
-    this.props.onChangeShelf();
   }
 
   render() {
+    const book = this.props.book;
 
     return (
       <li>
@@ -29,9 +23,18 @@ class Book extends Component {
             />
 
             <div className="book-shelf-changer">
-              <select value={this.state.value}
-                onChange={this.props.onChangeShelf}
-                >
+              <select
+                value={this.state.value}
+                onChange={event => {
+                  console.log(
+                    "Book.js event.target.value is : " + event.target.value
+                  );
+                  console.log(
+                    "Book.js selected book title is : " + book.title + " on the " + book.shelf + "shelf"
+                  );
+                  this.props.onChangeShelf(book, event.target.value);
+                }}
+              >
                 <option value="none" disabled>
                   Move to...
                 </option>
