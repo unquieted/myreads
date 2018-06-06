@@ -5,7 +5,7 @@ import "./App.css";
 
 class BooksApp extends React.Component {
   componentDidMount() {
-    console.log("App.js componentDidMount called.");
+    // console.log("App.js componentDidMount called.");
     BooksAPI.getAll().then(books => {
       this.setState({ books });
       console.log({ books });
@@ -39,21 +39,19 @@ class BooksApp extends React.Component {
     showSearchPage: false
   };
 
-  changeShelf = () => {
+  changeShelf = (book, newShelf) => {
     //TODO: update state to reflect book being moved to new shelf
+    // Need to send book and newShelf from selected book to this function
 
     console.log("App.js changeShelf called");
+    console.log("book = " + book.title);
+    console.log("evt = " + newShelf);
 
-    (book, newShelf) => {
-      BooksAPI.update(book, newShelf).then(() => {
-        book.shelf = newShelf;
-        BooksAPI.getAll().then(books => {
-          this.setState({
-            books: books
-          });
-        });
+    BooksAPI.update(book, newShelf).then(() => {
+      BooksAPI.getAll().then(books => {
+        this.setState({ books });
       });
-    };
+    });
   };
 
   render() {
