@@ -24,13 +24,17 @@ class Book extends Component {
 
             <div className="book-shelf-changer">
               <select
-                value={this.state.value}
+                value={book.shelfCode}
                 onChange={event => {
                   console.log(
                     "Book.js event.target.value is : " + event.target.value
                   );
                   console.log(
-                    "Book.js selected book title is : " + book.title + " on the " + book.shelf + "shelf"
+                    "Book.js selected book title is : " +
+                      book.title +
+                      " on the " +
+                      book.shelf +
+                      "shelf"
                   );
                   this.props.onChangeShelf(book, event.target.value);
                 }}
@@ -47,7 +51,15 @@ class Book extends Component {
           </div>
           <div className="book-title">{this.props.book.title}</div>
           <div className="book-authors">
-            {this.props.book.authors.join(", ")}
+            {this.props.book.authors ? (
+              <span>
+                {this.props.book.authors.map(author => (
+                  <div key={author}>{author}</div>
+                ))}
+              </span>
+            ) : (
+              <span> Author not found </span>
+            )}
           </div>
         </div>
       </li>
