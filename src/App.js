@@ -45,7 +45,7 @@ class BooksApp extends React.Component {
 
     console.log("App.js changeShelf called");
     console.log("book = " + book.title);
-    console.log("evt = " + newShelf);
+    console.log("newShelf = " + newShelf);
 
     BooksAPI.update(book, newShelf).then(() => {
       BooksAPI.getAll().then(books => {
