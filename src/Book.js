@@ -24,7 +24,7 @@ class Book extends Component {
 
             <div className="book-shelf-changer">
               <select
-                value={book.shelfCode}
+                value={book.shelf}
                 onChange={event => {
                   console.log(
                     "Book.js event.target.value is : " + event.target.value
