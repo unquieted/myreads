@@ -27,7 +27,7 @@ class BooksApp extends React.Component {
       },
       {
         shelfCode: "read",
-        shelfName: "Already Read"
+        shelfName: "Read"
       }
     ],
 
