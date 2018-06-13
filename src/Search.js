@@ -13,6 +13,8 @@ class Search extends Component {
     this.setState({ query: query.trim() });
   };
 
+  //TODO: figure out why all books on search page default to "Currently Reading"
+
   assignShelf = (items, shelvedBooks) => {
     items.map(book => {
       const match = shelvedBooks.filter(b => book.id === b.id);
