@@ -19,9 +19,9 @@ class Search extends Component {
     items.map(book => {
       const match = shelvedBooks.filter(b => book.id === b.id);
       if (match.length > 0) {
-        book.shelfCode = match[0].shelfCode;
+        book.shelf = match[0].shelf;
       } else {
-        book.shelfCode = "none";
+        book.shelf = "none";
       }
       return match;
     });
