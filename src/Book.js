@@ -18,7 +18,11 @@ class Book extends Component {
               style={{
                 width: 128,
                 height: 193,
-                backgroundImage: `url(${this.props.book.imageLinks.thumbnail})`
+                backgroundImage: `url(${
+                  this.props.book.imageLinks
+                    ? this.props.book.imageLinks.thumbnail
+                    : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"
+                })`
               }}
             />
 
