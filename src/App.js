@@ -38,9 +38,9 @@ class BooksApp extends React.Component {
     //TODO: update state to reflect book being moved to new shelf
     // Need to send book and newShelf from selected book to this function
 
-    // console.log("App.js changeShelf called");
-    // console.log("book = " + book.title);
-    // console.log("newShelf = " + newShelf);
+    console.log("App.js changeShelf called");
+    console.log("book = " + book.title);
+    console.log("newShelf = " + newShelf);
 
     BooksAPI.update(book, newShelf).then(() => {
       BooksAPI.getAll().then(books => {
@@ -90,7 +90,7 @@ class BooksApp extends React.Component {
           render={() => (
             <Search
               assignedBooks={this.state.books}
-              assignShelf={this.onChangeShelf}
+
               onChangeShelf={this.changeShelf}
             />
           )}

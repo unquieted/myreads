@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Book extends Component {
   constructor(props) {
     super(props);
-    // this.state = { value: this.props.book.shelf };
+    this.state = { value: this.props.book.shelf };
   }
 
   render() {
